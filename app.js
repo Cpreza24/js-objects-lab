@@ -165,8 +165,15 @@ Also, log the `game.items` array to confirm that the pokeball quantity is being 
 Solve Exercise 11 here:
 */
 
+
 game.catchPokemon = function(pokemonObj) {
     game.party.push(pokemonObj);
+    for (let i = 0; i < game.items.length; i++) {
+        if (game.items[i].name === 'pokeball') {
+            game.items[i].quantity--;
+        }
+    }
 }
 
-
+game.catchPokemon(pokemon[10]);
+console.log(game.party, game.items[1].quantity);
