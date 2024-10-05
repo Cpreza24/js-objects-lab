@@ -138,7 +138,7 @@ After writing this method, call it and pass in a Pokemon object of your choice f
 Solve Exercise 10 here:
 */
 
-game.catchPokemon = pokemonObj => {
+game.catchPokemon = function(pokemonObj) {
     game.party.push(pokemonObj);
 }
 
