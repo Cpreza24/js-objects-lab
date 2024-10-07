@@ -64,7 +64,14 @@ Exercise 5
 Solve Exercise 5 here:
 */
 
-game.party.push(pokemon[130], pokemon[133], pokemon[150]);
+for (let i = 0; i < pokemon.length; i++) {
+    //console.log(pokemon[i]);
+    if (pokemon[i].type === 'fire') {
+        console.log(`fire tupe pokemon: ${pokemon[i].name} ${pokemon[i].number}`);
+    }
+}
+
+game.party.push(pokemon[5], pokemon[37], pokemon[135]);
 
 //console.log(game);
 
@@ -150,7 +157,7 @@ game.catchPokemon = function(pokemonObj) {
 }
 
 game.catchPokemon(pokemon[2]);
-console.log(game.party);
+//console.log(game.party);
 
 /*
 Exercise 11
@@ -176,4 +183,91 @@ game.catchPokemon = function(pokemonObj) {
 }
 
 game.catchPokemon(pokemon[10]);
-console.log(game.party, game.items[1].quantity);
+console.log(game.party, `new pokebal count ${game.items[1].quantity}`);
+
+/*
+Exercise 12
+1. Similar to Exercise 6, now complete gyms with a difficulty below 6. How will you approach this?
+(change the value of `complete` in the qualifying objects from false to true).
+
+Solve Exercise 12 here:
+*/
+
+for (let i = 0; i < game.gyms.length; i++) {
+    //console.log(game.gyms[i]);
+    if (game.gyms[i].difficulty < 6) {
+        game.gyms[i].completed = true;
+    }
+}
+
+//console.log(game.gyms);
+
+/*
+Exercise 13
+1. Create a `gymStatus` method in `game` to tally completed and incomplete gyms.
+2. How will you iterate through the `gyms` array and update the tally? Remember to log the final tally.
+
+This method should:
+    - Not accept any arguments.
+    - Initially create a constant `gymTally`, which is an object that has two 
+    properties: `completed` and `incomplete`, both of which are initially set to 0.
+    - Iterate through the objects in the `game.gyms` array and update the 
+    properties on `gymTally` as follows: 
+    - `completed` should count how many gyms in the array have a value of `true` 
+        for their `completed` property. 
+    - `incomplete` should count how many gyms in the array have a value of 
+        `false` for their `completed` property.
+    - Log the value of `gymTally`.
+    - The method should not return anything.
+
+For example, if five gym objects have a value of `true` on their `completed` property and three gym objects have a value of `false` on their `completed` property, the logged value would be: `{ completed: 5, incomplete: 3 }`.
+
+Solve Exercise 13 here:
+*/
+
+game.gymStatus = function() {
+    const completedGyms = [];
+    const incompleteGyms = [];
+    const gymTally = {
+        completed: 0,
+        incomplete: 0,
+    }; 
+
+    for (let i = 0; i < game.gyms.length; i++) {
+        if (game.gyms[i].completed) {
+            completedGyms.push(game.gyms[i]);
+        } else if (game.gyms[i].completed === false) {
+            incompleteGyms.push(game.gyms[i]);
+        }
+    }
+    gymTally.completed = completedGyms.length;
+    gymTally.incomplete = incompleteGyms.length;
+    console.log(`Completed gyms: ${gymTally.completed}  Incomplete gyms: ${gymTally.incomplete}`);
+};
+
+game.gymStatus();
+
+
+/*
+Exercise 14
+1. Add a `partyCount` method to `game` that counts the number of Pokémon in your party.
+
+This method should:
+    - Not accept any arguments.
+    - Count the number of Pokemon in the party.
+    - return the found number of Pokemon in the party.
+
+Solve Exercise 14 here:
+*/
+
+game.partyCount = function() {
+    const pokemonInParty = [];
+
+    game.party.forEach(function(numInParty) {
+        pokemonInParty.push(numInParty);
+    });
+    console.log(`Number of pokemon in party: ${pokemonInParty.length}`);
+}
+
+game.partyCount();
+
