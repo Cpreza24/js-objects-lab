@@ -45,14 +45,18 @@ Exercise 4
 Solve Exercise 4 here:
 */
 
-for (let i = 0; i < pokemon.length; i++) {
-    if (pokemon[i].starter) {
-        console.log(pokemon[i]);
-    };
-};
+const starters = pokemon.filter(pkm => pkm.starter);
+console.log(starters);
+game.party.push(starters[1]);
 
-let starter = pokemon[3];
-game.party.push(starter);
+// for (let i = 0; i < pokemon.length; i++) {
+//     if (pokemon[i].starter) {
+//         console.log(pokemon[i]);
+//     };
+// };
+
+// let starter = pokemon[3];
+// game.party.push(starter);
 
 
 /*
