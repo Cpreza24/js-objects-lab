@@ -229,25 +229,42 @@ For example, if five gym objects have a value of `true` on their `completed` pro
 Solve Exercise 13 here:
 */
 
+// game.gymStatus = function() {
+//     const completedGyms = [];
+//     const incompleteGyms = [];
+//     const gymTally = {
+//         completed: 0,
+//         incomplete: 0,
+//     }; 
+
+//     for (let i = 0; i < game.gyms.length; i++) {
+//         if (game.gyms[i].completed) {
+//             completedGyms.push(game.gyms[i]);
+//         } else if (game.gyms[i].completed === false) {
+//             incompleteGyms.push(game.gyms[i]);
+//         }
+//     }
+//     gymTally.completed = completedGyms.length;
+//     gymTally.incomplete = incompleteGyms.length;
+//     console.log(`Completed gyms: ${gymTally.completed}  Incomplete gyms: ${gymTally.incomplete}`);
+// };
+
 game.gymStatus = function() {
-    const completedGyms = [];
-    const incompleteGyms = [];
     const gymTally = {
         completed: 0,
         incomplete: 0,
-    }; 
+    };
 
-    for (let i = 0; i < game.gyms.length; i++) {
-        if (game.gyms[i].completed) {
-            completedGyms.push(game.gyms[i]);
-        } else if (game.gyms[i].completed === false) {
-            incompleteGyms.push(game.gyms[i]);
+    for (const gym of game.gyms) {
+        if (gym.completed) {
+            gymTally.completed++;
+        } else {
+            gymTally.incomplete++;
         }
     }
-    gymTally.completed = completedGyms.length;
-    gymTally.incomplete = incompleteGyms.length;
-    console.log(`Completed gyms: ${gymTally.completed}  Incomplete gyms: ${gymTally.incomplete}`);
-};
+    console.log(gymTally);
+}
+
 
 game.gymStatus();
 
@@ -265,13 +282,9 @@ Solve Exercise 14 here:
 */
 
 game.partyCount = function() {
-    const pokemonInParty = [];
-
-    game.party.forEach(function(numInParty) {
-        pokemonInParty.push(numInParty);
-    });
-    console.log(`Number of pokemon in party: ${pokemonInParty.length}`);
+    return game.party.length
 }
+console.log(`Number of pokemon in party: ${game.partyCount()}`);
 
 game.partyCount();
 
